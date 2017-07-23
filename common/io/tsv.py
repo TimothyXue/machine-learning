@@ -10,7 +10,7 @@ class TsvDataSetReadr(object):
         matrix = [self.parseLine(line, attrType=attrType) for line in lines]
         return matrix
 
-    def parseline(self, line, **kwargs):
+    def parseLine(self, line, **kwargs):
         attrType = kwargs.get('attrType', None)
 
         #create x and y vai '\t'

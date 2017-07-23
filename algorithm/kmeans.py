@@ -1,10 +1,10 @@
 import numpy as np
 
 
-def ranCent(dataSet, k):
+def randCent(dataSet, k):
     # generate cent randomly
     n = np.shape(dataSet)[1]
-    centroids = np.mat(np.zeros(k, n))
+    centroids = np.mat(np.zeros((k, n)))
 
     for j in range(n):
         # retrieve minimum from shape n
@@ -47,15 +47,15 @@ def resetCentroids(centroids, clusterResult, dataSet, k):
 def clusterData(centroids, clusterResult, dataCount, dataSet, distOp, k):
     #cluster data using cents
     clusterChanged = False
-    for dataumIndex in range(dataCount):
-        datum = dataSet[dataumIndex, :]
+    for datumIndex in range(dataCount):
+        datum = dataSet[datumIndex, :]
         minDist, minIndex = findMinCent(datum, centroids, k, distOp)
-        if clusterResult[dataumIndex, 0] != minIndex:
-            clusterResult = True
+        if clusterResult[datumIndex, 0] != minIndex:
+            clusterChanged = True
         #record cluster result
-            clusterResult[dataumIndex, :] = minIndex, minDist ** 2
+        clusterResult[datumIndex, :] = minIndex, minDist ** 2
 
-        return  clusterChanged
+    return clusterChanged
 
 
 def findMinCent(datum, centroids, k, distOp):
