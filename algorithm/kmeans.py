@@ -9,7 +9,7 @@ def ranCent(dataSet, k):
     for j in range(n):
         # retrieve minimum from shape n
         minJ = min(dataSet[:, j])
-        rangeJ = max(dataSet[:, j] -minJ)
+        rangeJ = float(max(dataSet[:, j] -minJ))
 
         centroids[:, j] = minJ + rangeJ * np.random.rand(k, 1)
 
